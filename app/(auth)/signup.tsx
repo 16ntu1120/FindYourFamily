@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, TextInput} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, TextInput } from "react-native";
 import { useRouter } from "expo-router";
 
 export default function SignupScreen() {
-
   const router = useRouter();
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -70,8 +69,7 @@ export default function SignupScreen() {
         <Text style={styles.buttonText}>Create Account</Text>
       </TouchableOpacity>
 
-     
-      <TouchableOpacity onPress={() => router.push("/(tabs)/login")}>
+      <TouchableOpacity onPress={() => router.push("/(auth)/login")}>
         <Text style={styles.loginLink}>
           Already have an account?{" "}
           <Text style={styles.loginLinkGreen}>Login</Text>
@@ -120,10 +118,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 13,
     marginBottom: 10,
-  },
-  inputText: {
-    color: "#4b5563",
-    fontSize: 14,
   },
   button: {
     width: "100%",
