@@ -5,11 +5,11 @@ import { useRouter } from "expo-router";
 export default function SignupScreen() {
   const router = useRouter();
   const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
 
+  const handleGetOtp = () => {
+    router.push ("/(auth)/verify-otp");
+  };
   return (
     <View style={styles.container}>
 
@@ -27,17 +27,7 @@ export default function SignupScreen() {
         value={fullName}
         onChangeText={setFullName}
       />
-
-      <TextInput
-        style={styles.inputBox}
-        placeholder="Email address"
-        placeholderTextColor="#4b5563"
-        keyboardType="email-address"
-        autoCapitalize="none"
-        value={email}
-        onChangeText={setEmail}
-      />
-
+      
       <TextInput
         style={styles.inputBox}
         placeholder="Phone number"
@@ -47,26 +37,8 @@ export default function SignupScreen() {
         onChangeText={setPhoneNumber}
       />
 
-      <TextInput
-        style={styles.inputBox}
-        placeholder="Password"
-        placeholderTextColor="#4b5563"
-        secureTextEntry={true}
-        value={password}
-        onChangeText={setPassword}
-      />
-
-      <TextInput
-        style={styles.inputBox}
-        placeholder="Confirm password"
-        placeholderTextColor="#4b5563"
-        secureTextEntry={true}
-        value={confirmPassword}
-        onChangeText={setConfirmPassword}
-      />
-
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Create Account</Text>
+      <TouchableOpacity style={styles.button} onPress={handleGetOtp}>
+        <Text style={styles.buttonText}>Get OTP</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => router.push("/(auth)/login")}>

@@ -4,8 +4,12 @@ import { useRouter } from "expo-router";
 
 export default function LoginScreen() {
   const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+
+  const handleGetOtp = () => {
+    router.push("/(auth)/verify-otp");
+  };
+ 
 
   return (
     <View style={styles.container}>
@@ -19,25 +23,18 @@ export default function LoginScreen() {
 
       <TextInput
         style={styles.inputBox}
-        placeholder="Email Address"
+        placeholder="phone Number"
         placeholderTextColor="#4b5563"
-        keyboardType="email-address"
+        keyboardType="phone-pad"
         autoCapitalize="none"
-        value={email}
-        onChangeText={setEmail}
+        value={phoneNumber}
+        onChangeText={setPhoneNumber}
       />
 
-      <TextInput
-        style={styles.inputBox}
-        placeholder="Password"
-        placeholderTextColor="#4b5563"
-        secureTextEntry={true}
-        value={password}
-        onChangeText={setPassword}
-      />
+   
 
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Login</Text>
+      <TouchableOpacity style={styles.button} onPress={handleGetOtp}>
+        <Text style={styles.buttonText}>Get OTP</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => router.push("/(auth)/signup")}>
